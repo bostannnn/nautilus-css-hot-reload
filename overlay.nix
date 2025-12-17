@@ -13,6 +13,7 @@ final: prev: {
  * This enables live theme updates with tools like matugen.
  */
 
+#include "nautilus-css-hot-reload.h"
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 
@@ -116,7 +117,14 @@ EOF
       # Add header file
       cat > src/nautilus-css-hot-reload.h << 'EOF'
 #pragma once
+
+#include <glib.h>
+
+G_BEGIN_DECLS
+
 void nautilus_css_hot_reload_init (void);
+
+G_END_DECLS
 EOF
 
       # Add source to meson.build
