@@ -133,8 +133,8 @@ EOF
       # Add include to nautilus-application.c
       sed -i '/#include "nautilus-application.h"/a #include "nautilus-css-hot-reload.h"' src/nautilus-application.c
       
-      # Add init call after parent class startup
-      sed -i '/G_APPLICATION_CLASS (nautilus_application_parent_class)->startup (app);/a\    nautilus_css_hot_reload_init ();' src/nautilus-application.c
+      # Add init call after parent class startup (correct pattern matching actual source)
+      sed -i 's|G_APPLICATION_CLASS (nautilus_application_parent_class)->startup (G_APPLICATION (self));|G_APPLICATION_CLASS (nautilus_application_parent_class)->startup (G_APPLICATION (self));\n    nautilus_css_hot_reload_init ();|' src/nautilus-application.c
     '';
   });
 }
