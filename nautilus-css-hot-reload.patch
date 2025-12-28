@@ -153,3 +153,24 @@ new file mode 100644
 +void nautilus_css_hot_reload_init (void);
 +
 +G_END_DECLS
+diff --git a/src/nautilus-module.c b/src/nautilus-module.c
+--- a/src/nautilus-module.c
++++ b/src/nautilus-module.c
+@@ -254,6 +254,20 @@ nautilus_module_setup (void)
+         initialized = TRUE;
+ 
+         load_module_dir (NAUTILUS_EXTENSIONDIR);
++
++        const gchar *extra_dirs = g_getenv ("NAUTILUS_EXTENSION_DIRS");
++        if (extra_dirs != NULL && *extra_dirs != '\0')
++        {
++            gchar **dirs = g_strsplit (extra_dirs, G_SEARCHPATH_SEPARATOR_S, -1);
++            for (gchar **dir = dirs; dir != NULL && *dir != NULL; dir++)
++            {
++                if (**dir != '\0')
++                    load_module_dir (*dir);
++            }
++            g_strfreev (dirs);
++        }
+     }
+ }
