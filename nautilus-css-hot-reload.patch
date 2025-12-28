@@ -29,7 +29,7 @@ diff --git a/src/nautilus-css-hot-reload.c b/src/nautilus-css-hot-reload.c
 new file mode 100644
 --- /dev/null
 +++ b/src/nautilus-css-hot-reload.c
-@@ -0,0 +1,97 @@
+@@ -0,0 +1,107 @@
 +/*
 + * nautilus-css-hot-reload.c
 + * Watch ~/.config/gtk-4.0/gtk.css and reload on changes
