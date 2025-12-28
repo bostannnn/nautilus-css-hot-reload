@@ -1,13 +1,11 @@
 diff --git a/src/meson.build b/src/meson.build
 --- a/src/meson.build
 +++ b/src/meson.build
-@@ -1,5 +1,6 @@
- libnautilus_sources = [
+@@ -61,3 +61,4 @@
    'nautilus-application.c',
 +  'nautilus-css-hot-reload.c',
-   'nautilus-bookmark-list.c',
-   'nautilus-canvas-view.c',
-   'nautilus-canvas-view-container.c',
+   'nautilus-application.h',
+   'nautilus-app-chooser.c',
 diff --git a/src/nautilus-application.c b/src/nautilus-application.c
 --- a/src/nautilus-application.c
 +++ b/src/nautilus-application.c
@@ -143,7 +141,7 @@ diff --git a/src/nautilus-css-hot-reload.h b/src/nautilus-css-hot-reload.h
 new file mode 100644
 --- /dev/null
 +++ b/src/nautilus-css-hot-reload.h
-@@ -0,0 +1,10 @@
+@@ -0,0 +1,9 @@
 +#pragma once
 +
 +#include <glib.h>
@@ -156,9 +154,7 @@ new file mode 100644
 diff --git a/src/nautilus-module.c b/src/nautilus-module.c
 --- a/src/nautilus-module.c
 +++ b/src/nautilus-module.c
-@@ -254,6 +254,20 @@ nautilus_module_setup (void)
-         initialized = TRUE;
- 
+@@ -255,1 +255,13 @@
          load_module_dir (NAUTILUS_EXTENSIONDIR);
 +
 +        const gchar *extra_dirs = g_getenv ("NAUTILUS_EXTENSION_DIRS");
@@ -172,5 +168,3 @@ diff --git a/src/nautilus-module.c b/src/nautilus-module.c
 +            }
 +            g_strfreev (dirs);
 +        }
-     }
- }
