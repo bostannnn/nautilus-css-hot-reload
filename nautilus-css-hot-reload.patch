@@ -1,7 +1,7 @@
 diff --git a/src/meson.build b/src/meson.build
 --- a/src/meson.build
 +++ b/src/meson.build
-@@ -1,6 +1,7 @@
+@@ -1,5 +1,6 @@
  libnautilus_sources = [
    'nautilus-application.c',
 +  'nautilus-css-hot-reload.c',
