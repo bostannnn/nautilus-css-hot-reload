@@ -10,8 +10,8 @@ final: prev: {
 
     postFixup = (old.postFixup or "") + ''
       wrapProgram "$out/bin/nautilus" \
-        --run 'if [ -z "${XDG_DATA_DIRS:-}" ]; then export XDG_DATA_DIRS=/run/current-system/sw/share:/etc/xdg; else export XDG_DATA_DIRS="$XDG_DATA_DIRS:/run/current-system/sw/share:/etc/xdg"; fi' \
-        --run 'if [ -z "${NAUTILUS_EXTENSION_DIRS:-}" ]; then export NAUTILUS_EXTENSION_DIRS=/run/current-system/sw/lib/nautilus/extensions-4; else export NAUTILUS_EXTENSION_DIRS="$NAUTILUS_EXTENSION_DIRS:/run/current-system/sw/lib/nautilus/extensions-4"; fi'
+        --run 'if [ -z "''${XDG_DATA_DIRS:-}" ]; then export XDG_DATA_DIRS=/run/current-system/sw/share:/etc/xdg; else export XDG_DATA_DIRS="''${XDG_DATA_DIRS}:/run/current-system/sw/share:/etc/xdg"; fi' \
+        --run 'if [ -z "''${NAUTILUS_EXTENSION_DIRS:-}" ]; then export NAUTILUS_EXTENSION_DIRS=/run/current-system/sw/lib/nautilus/extensions-4; else export NAUTILUS_EXTENSION_DIRS="''${NAUTILUS_EXTENSION_DIRS}:/run/current-system/sw/lib/nautilus/extensions-4"; fi'
     '';
   });
 }
